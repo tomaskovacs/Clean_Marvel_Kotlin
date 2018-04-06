@@ -54,9 +54,14 @@ The `Kotlin` plugin for Android Studio is also required.
 
 ## Sources
 
+[Course Kotlin for Android Development By Acamica] (https://globant.acamica.com/cursos/432/)
+
 [Course Kotlin for android developers by  Antonio Leiva](https://academy.antonioleiva.com/courses/)
 
 [Keddit — Part 6: API — Retrofit & Kotlin](https://android.jlelse.eu/keddit-part-6-api-retrofit-kotlin-d309074af0)
 
 [Karumi/KataScreenshotKotlin](https://github.com/Karumi/KataScreenshotKotlin)
+
+[Blog Kotlin Academy](https://blog.kotlin-academy.com/?gi=eb3876fe85ef)
+
 
