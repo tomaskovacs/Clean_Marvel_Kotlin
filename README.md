@@ -3,6 +3,7 @@
 
 # Clean Marvel Kotlin
 Kata Kotlin 
+
 [Clean Arquitecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html/)
 
 [MVP](https://antonioleiva.com/mvp-android/) 
@@ -54,7 +55,7 @@ The `Kotlin` plugin for Android Studio is also required.
 
 ## Sources
 
-[Course Kotlin for Android Development By Acamica] (https://globant.acamica.com/cursos/432/)
+[Course Kotlin for Android Development By Acamica](https://globant.acamica.com/cursos/432/)
 
 [Course Kotlin for android developers by  Antonio Leiva](https://academy.antonioleiva.com/courses/)
 
