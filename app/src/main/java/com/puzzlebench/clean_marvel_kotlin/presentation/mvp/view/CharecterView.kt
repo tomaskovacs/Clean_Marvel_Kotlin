@@ -1,19 +1,30 @@
-package com.puzzlebench.clean_marvel_kotlin.presentation.mvp
+package com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view
 
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.puzzlebench.clean_marvel_kotlin.R
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
-import com.puzzlebench.clean_marvel_kotlin.presentation.MainActivity
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.activity.MainActivity
 import com.puzzlebench.clean_marvel_kotlin.presentation.adapter.CharacterAdapter
 import com.puzzlebench.clean_marvel_kotlin.presentation.extension.showToast
+import io.reactivex.Single
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
 class CharecterView(activity: MainActivity) {
     private val activityRef = WeakReference(activity)
     private val SPAN_COUNT = 1
-    var adapter = CharacterAdapter { character -> activity.applicationContext.showToast(character.name) }
+    var adapter = CharacterAdapter {character ->
+        //activity.applicationContext.showToast(character.name)
+        /*Observable.create<Character> { subscriber ->
+            subscriber.onNext(character)
+            subscriber.onComplete()*/
+        Single.create<Character> { emitter ->
+            emitter.onSuccess(character)
+            // TODO: continue: send the event with the character pressed
+        }
+        //}
+    }
 
     fun init() {
         val activity = activityRef.get()
@@ -22,7 +33,6 @@ class CharecterView(activity: MainActivity) {
             activity.recycleView.adapter = adapter
             showLoading()
         }
-
     }
 
     fun showToastNoItemToShow() {
@@ -48,6 +58,5 @@ class CharecterView(activity: MainActivity) {
 
     fun showLoading() {
         activityRef.get()!!.progressBar.visibility = View.VISIBLE
-
     }
 }

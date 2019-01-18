@@ -22,7 +22,7 @@ class GetCharacterServiceUseCaseTest {
 
     @Test operator fun invoke() {
         val getCharacterServiceUseCase = GetCharacterServiceUseCase(characterServiceImp)
-        getCharacterServiceUseCase.invoke()
+        getCharacterServiceUseCase.invokeCharaters()
         verify(characterServiceImp).getCaracters()
     }
 

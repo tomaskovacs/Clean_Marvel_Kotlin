@@ -4,6 +4,8 @@ import com.puzzlebench.clean_marvel_kotlin.data.service.CharacterServicesImpl
 import com.puzzlebench.clean_marvel_kotlin.domain.model.Character
 import com.puzzlebench.clean_marvel_kotlin.domain.usecase.GetCharacterServiceUseCase
 import com.puzzlebench.clean_marvel_kotlin.mocks.factory.CharactersFactory
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.presenter.CharacterPresenter
+import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharecterView
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.CompositeDisposable
@@ -40,7 +42,7 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithError() {
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(Observable.error(Exception("")))
+        Mockito.`when`(getCharacterServiceUseCase.invokeCharaters()).thenReturn(Observable.error(Exception("")))
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
@@ -53,7 +55,7 @@ class CharacterPresenterTest {
     fun reposeWithItemToShow() {
         val itemsCharecters = CharactersFactory.getMockCharacter()
         val observable = Observable.just(itemsCharecters)
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
+        Mockito.`when`(getCharacterServiceUseCase.invokeCharaters()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
@@ -67,7 +69,7 @@ class CharacterPresenterTest {
     fun reposeWithoutItemToShow() {
         val itemsCharecters = emptyList<Character>()
         val observable = Observable.just(itemsCharecters)
-        Mockito.`when`(getCharacterServiceUseCase.invoke()).thenReturn(observable)
+        Mockito.`when`(getCharacterServiceUseCase.invokeCharaters()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
         verify(characterServiceImp).getCaracters()
