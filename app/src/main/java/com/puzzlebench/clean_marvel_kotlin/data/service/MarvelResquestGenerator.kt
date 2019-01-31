@@ -20,8 +20,8 @@ class MarvelResquestGenerator {
         val hash = md5(timestamp.toString() + BuildConfig.PRIVATE_API_KEY_VALUE +
                 BuildConfig.PUBLIC_API_KEY_VALUE)
 
-        val defaulthttpUrl = defaultRequest.url()
-        val httpUrl = defaulthttpUrl.newBuilder()
+        val defaultHttpUrl = defaultRequest.url()
+        val httpUrl = defaultHttpUrl.newBuilder()
                 .addQueryParameter("orderBy","-modified")
                 .addQueryParameter(TS, timestamp.toString())
                 .addQueryParameter(PUBLIC_API_KEY_ARG, BuildConfig.PUBLIC_API_KEY_VALUE)
