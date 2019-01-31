@@ -15,14 +15,11 @@ import com.puzzlebench.clean_marvel_kotlin.presentation.mvp.view.CharacterDetail
 
 private const val ARG_CHARACTER_ID = "characterId"
 
-class CharacterDetailFramgent : BaseRxDialogFragment() {
-
-    val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
-    val presenter = CharacterDetailPresenter(CharacterDetailView(this), getCharacterServiceUseCase, subscriptions)
+class CharacterDetailFragment : BaseRxDialogFragment() {
 
     companion object {
         fun newInstance(characterId: Int) =
-                CharacterDetailFramgent().apply {
+                CharacterDetailFragment().apply {
                     arguments = Bundle().apply {
                         putInt(ARG_CHARACTER_ID, characterId)
                     }
@@ -31,6 +28,9 @@ class CharacterDetailFramgent : BaseRxDialogFragment() {
 
     override fun onStart() {
         super.onStart()
+        val getCharacterServiceUseCase = GetCharacterServiceUseCase(CharacterServicesImpl())
+        val presenter = CharacterDetailPresenter(CharacterDetailView(this), getCharacterServiceUseCase, subscriptions,
+                arguments.getInt(ARG_CHARACTER_ID))
         presenter.init()
     }
 

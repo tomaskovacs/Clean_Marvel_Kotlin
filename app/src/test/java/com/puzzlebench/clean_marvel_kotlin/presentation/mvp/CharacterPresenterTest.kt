@@ -42,10 +42,10 @@ class CharacterPresenterTest {
 
     @Ignore
     fun reposeWithError() {
-        Mockito.`when`(getCharacterServiceUseCase.invokeCharaters()).thenReturn(Observable.error(Exception("")))
+        Mockito.`when`(getCharacterServiceUseCase.invokeCharacters()).thenReturn(Observable.error(Exception("")))
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showToastNetworkError("")
 
@@ -55,10 +55,10 @@ class CharacterPresenterTest {
     fun reposeWithItemToShow() {
         val itemsCharecters = CharactersFactory.getMockCharacter()
         val observable = Observable.just(itemsCharecters)
-        Mockito.`when`(getCharacterServiceUseCase.invokeCharaters()).thenReturn(observable)
+        Mockito.`when`(getCharacterServiceUseCase.invokeCharacters()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
         verify(view).hideLoading()
         verify(view).showCharacters(itemsCharecters)
 
@@ -69,10 +69,10 @@ class CharacterPresenterTest {
     fun reposeWithoutItemToShow() {
         val itemsCharecters = emptyList<Character>()
         val observable = Observable.just(itemsCharecters)
-        Mockito.`when`(getCharacterServiceUseCase.invokeCharaters()).thenReturn(observable)
+        Mockito.`when`(getCharacterServiceUseCase.invokeCharacters()).thenReturn(observable)
         characterPresenter.init()
         verify(view).init()
-        verify(characterServiceImp).getCaracters()
+        verify(characterServiceImp).getCharacters()
 
 
     }
