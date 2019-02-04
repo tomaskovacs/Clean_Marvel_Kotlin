@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.ref.WeakReference
 
 class CharecterView(activity: MainActivity) {
+
     private val activityRef = WeakReference(activity)
     private val SPAN_COUNT = 1
     var adapter = CharacterAdapter {character ->
@@ -22,10 +23,15 @@ class CharecterView(activity: MainActivity) {
     fun init() {
         val activity = activityRef.get()
         activity?.let {
+            // RecyclerView setup
             it.recycleView.layoutManager = GridLayoutManager(activity, SPAN_COUNT)
             it.recycleView.adapter = adapter
             showLoading()
         }
+    }
+
+    fun setFabClickListener(listener: View.OnClickListener) {
+        activityRef.get()?.refreshFab?.setOnClickListener(listener)
     }
 
     fun showToastNoItemToShow() {
@@ -47,6 +53,7 @@ class CharecterView(activity: MainActivity) {
 
     fun showCharacters(characters: List<Character>) {
         adapter.data = characters
+        adapter.notifyDataSetChanged()
     }
 
     fun showLoading() {
