@@ -18,7 +18,7 @@ open class CharacterMapperLocal: BaseMapperRepository<Character, RCharacter> {
             type.id,
             type.name,
             type.description,
-            transformToThumbnail(type.rThumbnail!!)
+            transformToThumbnail(type.rThumbnail)
     )
 
     fun transformToRThumbnail(thumbnail: Thumbnail): RThumbnail
